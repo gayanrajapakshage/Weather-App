@@ -1,12 +1,15 @@
 # The Weather App
 
 ## Overview
-The Weather App is a full-stack application that provides users with real-time weather information and a weekly forecast for cities around the world. It also includes a search feature to easily find city-specific weather updates.
+The Weather App is a full-stack application that provides users with real-time weather information and a 3-day forecast for cities around the world. It also includes a search feature to easily find city-specific weather updates.
 
 ## Features
-- Current Weather: Displays the current temperature, conditions, and other key details for the selected city.
-- Weekly Forecast: Provides a 3-day weather forecast.
+- Weather and Forecast: Displays the temperature, conditions, and other key details for the selected city over a 3-day weather forecast.
 - City Search: Allows users to search for weather updates by city name.
+
+## Use
+
+Visit https://gayanrajapakshage.github.io/Weather-App/ to use the project yourself!
 
 ## Technologies Used
 
