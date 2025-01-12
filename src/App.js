@@ -11,7 +11,7 @@ function App() {
 
   const getWeather = async () => {
     try {
-      const response = await axios.get('http://127.0.0.1:5001/current-weather', {
+      const response = await axios.get('https://weather-app-ijxq.onrender.com/current-weather', {
         params: { city: city },
       });
       setWeather(response.data);
@@ -24,7 +24,7 @@ function App() {
 
   const getWeeklyForecast = async() => {
     try{
-      const response = await axios.get('http://127.0.0.1:5001/weekly-forecast', {
+      const response = await axios.get('https://weather-app-ijxq.onrender.com/weekly-forecast', {
         params: { city: city },
       });
       console.log('Weekly forecast data:', response.data);
@@ -37,7 +37,7 @@ function App() {
 
   const getSearchCity = async() => {
     try{
-      const response = await axios.get('http://127.0.0.1:5001/search-city', {
+      const response = await axios.get('https://weather-app-ijxq.onrender.com/search-city', {
         params: { query: city },
       });
       console.log('Search City data:', response.data);
