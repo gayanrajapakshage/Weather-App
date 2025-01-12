@@ -4,9 +4,9 @@ import requests
 
 # Create app
 app = Flask(__name__)
-CORS(app, resources={r"/current-weather": {"origins": ["http://localhost:3000", "https://github.com/gayanrajapakshage/Weather-App"]}})
-CORS(app, resources={r"/weekly-forecast": {"origins": ["http://localhost:3000", "https://github.com/gayanrajapakshage/Weather-App"]}})
-CORS(app, resources={r"/search-city": {"origins": ["http://localhost:3000", "https://github.com/gayanrajapakshage/Weather-App"]}})
+CORS(app, resources={r"/current-weather": {"origins": ["http://localhost:3000", "https://github.com/gayanrajapakshage"]}})
+CORS(app, resources={r"/weekly-forecast": {"origins": ["http://localhost:3000", "https://github.com/gayanrajapakshage"]}})
+CORS(app, resources={r"/search-city": {"origins": ["http://localhost:3000", "https://github.com/gayanrajapakshage"]}})
 
 # API key
 WEATHER_API_KEY = "ae3e3e2375f74ca381d11445242904"  # Replace with your valid API key
