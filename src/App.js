@@ -4,11 +4,12 @@ import axios from 'axios';
 
 function App() {
   const [city, setCity] = useState(''); // State to hold the city input value
-  const [weather, setWeather] = useState(null); // State to hold weather data
+  const [weather, setWeather] = useState(null); // State to hold current weather data
+  const [weeklyForecast, setWeeklyForecast] = useState(null); // State to hold weekly weather data
   const [error, setError] = useState(null); // State to hold error messages
-  const [weeklyForecast, setWeeklyForecast] = useState(null);
-  const [searchCity, setSearchCity] = useState(null);
+  //const [searchCity, setSearchCity] = useState(null);
 
+  // Function to fetch current weather data for the entered city
   const getWeather = async () => {
     try {
       const response = await axios.get('https://weather-app-xv4x.onrender.com/current-weather', {
@@ -22,6 +23,7 @@ function App() {
   }
   };
 
+  // Function to fetch weekly forecast data for the entered city
   const getWeeklyForecast = async() => {
     try{
       const response = await axios.get('https://weather-app-xv4x.onrender.com/weekly-forecast', {
@@ -35,7 +37,8 @@ function App() {
     }
   };
 
-  const getSearchCity = async() => {
+  // Function to search for cities matching the query (not needed)
+  /*const getSearchCity = async() => {
     try{
       const response = await axios.get('https://weather-app-xv4x.onrender.com/search-city', {
         params: { query: city },
@@ -46,13 +49,15 @@ function App() {
     } catch(error){
       setSearchCity(null);
     }
-  };
+  };*/
 
+  // Function to handle the main search operation
   const handleSearch = async () => {
     await getWeather();
     await getWeeklyForecast();
   };
 
+  // Handle pressing "Enter" to trigger a search
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
       handleSearch();
@@ -63,8 +68,10 @@ function App() {
     <div className="App">
       <div className="container">
         <h1 className="title">THE WEATHER APP</h1>
-        {/* Input and button to search for weather */}
+        
+        {/* Search container for user input and search button */}
         <div className="city-search-container">
+          {/* Input field for entering the city */}
           <input
             type="text"
             id="city-input"
@@ -75,6 +82,7 @@ function App() {
             }}
             onKeyDown={handleKeyDown}
           />
+          {/* Search button */}
           <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
           <span className="material-symbols-outlined" onClick={handleSearch}>
           search
@@ -83,9 +91,13 @@ function App() {
         
         {/* Display error message if there's an error */}
         {error && <p className="error-message">{error}</p>}
-        {/* Display weather data if available */}
+
+        {/* Display current weather location if weather data is available */}
         {weather && ( <h2 className="location">{weather.location.name}, {weather.location.region}, {weather.location.country}</h2>)}
+        
         <div className="weather-card-container">
+          
+          {/* Card for current weather data */}
           {weather && (
               <div className="current-weather-card">
                 <h2>Current</h2>
@@ -99,8 +111,12 @@ function App() {
                 <p>Humidity: {weather.current.humidity}%</p>
               </div>
           )}
+          
+          {/* Cards for the weekly forecast */}
           {weeklyForecast && (
             <div className="weekly-forecast-cards">
+              
+              {/* Card for tomorrow's weather */}
               <div className="day-one-weather">
                 <h2>Tomorrow</h2>
                 <div className="day-one-temp">
@@ -112,6 +128,8 @@ function App() {
                 <p>Max. Wind: {weeklyForecast.forecast.forecastday[1].day.maxwind_kph} km/h</p>
                 <p>Humidity: {weeklyForecast.forecast.forecastday[1].day.avghumidity}%</p>
               </div>
+              
+              {/* Card for the day after tomorrow's weather */}
               <div className="day-two-weather">
                 <h2>Day After</h2>
                 <div className="day-two-temp">
